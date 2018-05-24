@@ -1,21 +1,36 @@
 package be.vdab.valueobjects;
-import org.junit.Assert;
 import org.junit.Test;
+
+import be.vdab.valueobjects.Jaar;
+
+import static org.junit.Assert.*;
 public class JaarTest {
 	@Test
 	public void eenjaarDeelbaarDoor400IsEenSchrikkeljaar() {
-		Assert.assertTrue(new Jaar(2000).isSchrikkeljaar());
+		assertTrue(new Jaar(2000).isSchrikkeljaar());
 	}
 	@Test
 	public void eenJaarDeelbaarDoor100IsGeenSchrikkeljaar() {
-		Assert.assertFalse(new Jaar(1900).isSchrikkeljaar());
+		assertFalse(new Jaar(1900).isSchrikkeljaar());
 	}
 	@Test
 	public void eenJaarDeelbaarDoor4IsEenSchrikkeljaar() {
-		Assert.assertTrue(new Jaar(2012).isSchrikkeljaar());
+		assertTrue(new Jaar(2012).isSchrikkeljaar());
 	}
 	@Test
 	public void eenJaarNietDeelbaarDoor4IsGeenSchrikkeljaar() {
-		Assert.assertFalse(new Jaar(2015).isSchrikkeljaar());
+		assertFalse(new Jaar(2015).isSchrikkeljaar());
+	}
+	@Test
+	public void equalsOpTweeDezelfdeJarenMoetTrueZijn() {
+		assertEquals(new Jaar(2015), new Jaar(2015));
+	}
+	@Test
+	public void equalsOpTweeVerschillendeJarenMoetFalseZijn() {
+		assertNotEquals(new Jaar(2015), new Jaar(2016));
+	}
+	@Test
+	public void hashCodeOpTweeDezelfdeJarenMoetGelijkZijn() {
+		assertEquals(new Jaar(2015).hashCode(), new Jaar(2015).hashCode());
 	}
 }

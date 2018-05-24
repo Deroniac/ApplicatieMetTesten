@@ -1,6 +1,9 @@
 package be.vdab.entities;
 import java.math.BigDecimal;
 import org.junit.Test;
+
+import be.vdab.entities.Rekening;
+
 import org.junit.Before;
 import static org.junit.Assert.*;
 public class RekeningTest {
@@ -24,5 +27,17 @@ public class RekeningTest {
 		rekening.storten(BigDecimal.valueOf(2.5));
 		rekening.storten(BigDecimal.valueOf(1.2));
 		assertEquals(0, BigDecimal.valueOf(3.7).compareTo(rekening.getSaldo()));
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void hetBedragVanEenStortingMagNietNulZijn() {
+		rekening.storten(BigDecimal.ZERO);
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void hetBedragVanEenStortingMagNietNegatiefZijn() {
+		rekening.storten(BigDecimal.valueOf(-1));
+	}
+	@Test(expected = NullPointerException.class)
+	public void hetBedragVanEenStortingMagNietNullZijn() {
+		rekening.storten(null);
 	}
 }
