@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import be.vdab.entities.Land;
 import be.vdab.repositories.LandRepository;
-import be.vdab.repositories.LandRepositoryStub;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -21,7 +20,6 @@ public class LandServiceTest {
 	@Before public void before() {
 		when(landRepository.findOppervlakteAlleLanden()).thenReturn(20);
 		when(landRepository.read("B")).thenReturn(new Land("B", 5));
-		landRepository = new LandRepositoryStub();
 		landService = new LandService(landRepository);
 	}
 	@Test public void findVerhoudingOppervlakteLandTovOppervlakteAlleLanden() {

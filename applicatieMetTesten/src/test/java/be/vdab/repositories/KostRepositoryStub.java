@@ -4,6 +4,6 @@ import java.math.BigDecimal;
 
 public class KostRepositoryStub implements KostRepository{
 	@Override public BigDecimal findTotaleKost() {
-		return BigDecimal.ONE;
+		return BigDecimal.valueOf(169);
 	}
 }
